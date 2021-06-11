@@ -1,0 +1,14 @@
+.circle {
+  background-color: #ccc;
+  border-radius: 50%;
+  height: 150px;
+  text-align: center;
+  width: 150px;
+}
+
+.initials {
+  font-size: 70px; /* 50% of parent */
+  line-height: 1;
+  position: relative;
+  top: 35px; /* 25% of parent */
+}

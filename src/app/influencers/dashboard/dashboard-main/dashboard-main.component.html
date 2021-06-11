@@ -1,2 +1,18 @@
 <app-header [showBtn]="true" (onLogout)="onLogout()"></app-header>
-<h1>Welcome to Influencer dashboard</h1>
+<div class="row m-5">
+  <div class="col">
+    <button class="btn btn-primary">View Suggestions</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary">Live Campaigns</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary">Get Strategies</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary">Courses</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-primary" [routerLink]="'/influencerProfile'">Profile</button>
+  </div>
+</div>

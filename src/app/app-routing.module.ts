@@ -16,6 +16,8 @@ const routes: Routes = [
     module => module.DashboardModule )},
   { path: 'brandDashboard', loadChildren: () => import(`./brands/dashboard/dashboard.module`).then(
     module => module.DashboardModule )},
+  { path: 'influencerProfile', loadChildren: () => import(`./influencers/profile/profile.module`).then(
+    module => module.ProfileModule )},
 ];
 
 @NgModule({

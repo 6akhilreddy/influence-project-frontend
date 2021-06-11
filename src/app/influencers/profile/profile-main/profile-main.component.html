@@ -1,0 +1,151 @@
+<app-header></app-header>
+<div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <div class="avatar-header">
+              <app-avatar [initial]="initalFromUsername"></app-avatar>
+            </div>
+            <h3>{{influencerData.username}}</h3>
+          </div>
+          <div class="card-body">
+            <p class="mb-0"><strong class="pr-1">Influencer ID : </strong>{{influencerData._id}}</p>
+            <p class="mb-0"><strong class="pr-1">Created : </strong>{{influencerData.created}}</p>
+            <p class="mb-0"><strong class="pr-1">Updated : </strong>{{influencerData.updated}}</p>
+          </div>
+          <div class="card-footer text-center">
+            <button *ngIf="!allowEdit" class="btn btn-primary m-1" [routerLink]="'/influencerDashboard'">Dashboard</button>
+            <button *ngIf="!allowEdit" class="btn btn-secondary m-1" (click)="toggleEdit()">Edit</button>
+            <button *ngIf="allowEdit" class="btn btn-primary m-1" (click)="onSubmit()">Submit</button>
+            <button *ngIf="allowEdit" class="btn btn-secondary m-1" (click)="onCancel()">cancel</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+              <tr>
+                <th width="30%">Name</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.name}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="name" [(ngModel)]="editedData.name"
+                    required placeholder="Fullname"></td>
+              </tr>
+              <tr>
+                <th width="30%">Email </th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.email}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="email"
+                    [(ngModel)]="editedData.email" required placeholder="Email"></td>
+              </tr>
+              <tr>
+                <th width="30%">Gender</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.gender}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="gender"
+                    [(ngModel)]="editedData.gender" required placeholder="Gender"></td>
+              </tr>
+              <tr>
+                <th width="30%">Age</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.age}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="age" [(ngModel)]="editedData.age"
+                    required placeholder="Age"></td>
+              </tr>
+              <tr>
+                <th width="30%">Contact</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.contact}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="contact"
+                    [(ngModel)]="editedData.contact" required placeholder="Contact"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div style="height: 26px"></div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Social Media Information</h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+              <tr>
+                <th width="30%">Instagram Handle</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.instagram_handle}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="instagram_handle" [(ngModel)]="editedData.instagram_handle"
+                    required placeholder="Instagram Handle"></td>
+              </tr>
+              <tr>
+                <th width="30%">Instagram Followers Count</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.instagram_followers}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="instagram_followers"
+                    [(ngModel)]="editedData.instagram_followers" required placeholder="Instagram Followers"></td>
+              </tr>
+              <tr>
+                <th width="30%">Instagram Posts Count</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.instagram_posts}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="instagram_posts"
+                    [(ngModel)]="editedData.instagram_posts" required placeholder="Instagram Posts"></td>
+              </tr>
+              <tr>
+                <th width="30%">Facebook Handle</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.facebook_handle}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="facebook_handle" [(ngModel)]="editedData.facebook_handle"
+                    required placeholder="Facebook Handle"></td>
+              </tr>
+              <tr>
+                <th width="30%">Twitter Handle</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{influencerData.twitter_handle}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="twitter_handle"
+                    [(ngModel)]="editedData.twitter_handle" required placeholder="twitter handle"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div style="height: 26px"></div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Interests</h3>
+          </div>
+          <div *ngIf="!allowEdit" class="card-body pt-0 row">
+              <div class="col" *ngFor="let interest of influencerData.interests">
+                <div class="chip">
+                  <div class="chip-head">{{interest[0]}}</div>
+                  <div class="chip-content">{{interest}}</div>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="allowEdit" class="card-body pt-0 row">
+            <div class="form-check form-switch col" *ngFor="let interest of interests">
+              <input class="form-check-input" type="checkbox" [checked]="checkInterest(interest)" (change)="getCheckboxValues($event, interest)">
+              <label class="form-check-label" for="flexSwitchCheckDefault">{{interest}}</label>
+            </div>
+          </div>
+        </div>
+        <div style="height: 26px"></div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>About Me</h3>
+          </div>
+          <div class="card-body pt-0">
+            <p *ngIf="!allowEdit">{{influencerData.description}}</p>
+            <div *ngIf="allowEdit" class="mb-3">
+              <textarea class="form-control" name="description" rows="3" [(ngModel)]="editedData.description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
