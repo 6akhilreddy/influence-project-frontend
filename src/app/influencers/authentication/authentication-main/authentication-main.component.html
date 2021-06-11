@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="mian-background">
+  <h1 class="text-center heading">Influencers</h1>
+  <section>
+    <div class="container">
+      <div class="user signinBx">
+        <div class="imgBx"><img
+            src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg"
+            alt="" /></div>
+        <div class="formBx">
+          <form novalidate #signInformRef="ngForm" (ngSubmit)="onSubmitSignIn(signInformRef.value)">
+            <h2>Sign In</h2>
+            <input type="text" name="username" ngModel required placeholder="Username">
+            <input type="password" name="password" ngModel required placeholder="Password" />
+            <div *ngIf="signInErrorMsg!==''" class="errorMsg">{{signInErrorMsg}}</div>
+            <input type="submit" name="" value="Login" />
+            <p class="signup">
+              Don't have an account ?
+              <a (click)="toggleForm()">Sign Up.</a>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="user signupBx">
+        <div class="formBx">
+          <form novalidate #signUpformRef="ngForm" (ngSubmit)="onSubmitSignUp(signUpformRef.value)">
+            <h2>Create an account</h2>
+            <input type="text" name="username" ngModel required placeholder="Username" />
+            <input type="text" name="brand_name" ngModel required placeholder="Brand Name" />
+            <input type="email" name="email" ngModel required placeholder="Email Address" />
+            <input type="password" name="password" ngModel required placeholder="Create Password" />
+            <input type="password" name="confirmPassword" ngModel required placeholder="Confirm Password" />
+            <div *ngIf="signUpErrorMsg!==''" class="errorMsg">{{signUpErrorMsg}}</div>
+            <input type="submit" name="" value="Sign Up" />
+            <p class="signup">
+              Already have an account ?
+              <a (click)="toggleForm()">Sign in.</a>
+            </p>
+          </form>
+        </div>
+        <div class="imgBx"><img
+            src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg"
+            alt="" /></div>
+      </div>
+    </div>
+  </section>
+</div>

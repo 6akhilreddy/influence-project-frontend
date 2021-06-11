@@ -1,7 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomePageComponent } from './shared/components/home-page/home-page.component'
 
-const routes: Routes = [];
+let redirectUrl = '/home';
+
+const routes: Routes = [
+  { path: '', redirectTo: redirectUrl, pathMatch: 'full' },
+  { path: 'home', component: HomePageComponent},
+
+  { path: 'influencerAuth', loadChildren: () => import(`./influencers/authentication/authentication.module`).then(
+    module => module.AuthenticationModule )},
+  { path: 'brandAuth', loadChildren: () => import(`./brands/authentication/authentication.module`).then(
+    module => module.AuthenticationModule )},
+  { path: 'influencerDashboard', loadChildren: () => import(`./influencers/dashboard/dashboard.module`).then(
+    module => module.DashboardModule )},
+  { path: 'brandDashboard', loadChildren: () => import(`./brands/dashboard/dashboard.module`).then(
+    module => module.DashboardModule )},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
