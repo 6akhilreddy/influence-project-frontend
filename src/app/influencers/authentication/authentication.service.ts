@@ -21,11 +21,11 @@ export class AuthenticationService {
   }
 
   setupLoginSession(username:string){
-    localStorage.setItem('isLoggedIn', 'yes');
-    localStorage.setItem('loggedInUsername', username);
+    localStorage.setItem('isLoggedInInfluencer', 'yes');
+    localStorage.setItem('loggedInInfluencerUsername', username);
   }
 
   getLoginSession(){
-    return localStorage.getItem('isLoggedIn')
+    return localStorage.getItem('isLoggedInInfluencer')
   }
 }

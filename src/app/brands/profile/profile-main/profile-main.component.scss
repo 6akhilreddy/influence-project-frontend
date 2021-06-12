@@ -1,0 +1,75 @@
+.student-profile .card {
+  border-radius: 10px;
+}
+.student-profile .card .card-header .profile_img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px auto;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+}
+.student-profile .card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.student-profile .card p {
+  font-size: 16px;
+  color: #000;
+}
+.student-profile .table th,
+.student-profile .table td {
+    font-size: 14px;
+    padding: 10px 10px;
+    color: #000;
+}
+.avatar-header{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.chip{
+  display: inline-flex;
+  flex-direction: row;
+  background-color: #e5e5e5;
+  border: none;
+  cursor: default;
+  height: 36px;
+  outline: none;
+  padding: 0;
+  font-size: 14px;
+  font-color: #333333;
+  font-family:"Open Sans", sans-serif;
+  white-space: nowrap;
+  align-items: center;
+  border-radius: 16px;
+  vertical-align: middle;
+  text-decoration: none;
+  justify-content: center;
+}
+.chip-head{
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background-color: #32C5D2;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+  width: 36px;
+  color: #fff;
+  height: 36px;
+  font-size: 20px;
+  margin-right: -4px;
+}
+.chip-content{
+  cursor: inherit;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  white-space: nowrap;
+  padding-left: 12px;
+  padding-right: 12px;
+}

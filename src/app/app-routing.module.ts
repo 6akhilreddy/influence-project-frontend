@@ -18,6 +18,10 @@ const routes: Routes = [
     module => module.DashboardModule )},
   { path: 'influencerProfile', loadChildren: () => import(`./influencers/profile/profile.module`).then(
     module => module.ProfileModule )},
+  { path: 'brandProfile', loadChildren: () => import(`./brands/profile/profile.module`).then(
+    module => module.ProfileModule )},
+  { path: 'influencerStrategies', loadChildren: () => import(`./influencers/strategies/strategies.module`).then(
+    module => module.StrategiesModule )},
 ];
 
 @NgModule({

@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="startegies-main">
+  <h2 class="text-center">Strategies</h2>
+  <my-tabs>
+    <my-tab [tabTitle]="'Current Instagram Trends'">
+      <app-strategies-details [keyword]="'Instagram trends'"></app-strategies-details>
+    </my-tab>
+    <my-tab [tabTitle]="'Organic Growth Strategies'">
+      <app-strategies-details [keyword]="'organic growth'"></app-strategies-details>
+    </my-tab>
+    <my-tab [tabTitle]="'Social Media Marketing'">
+      <app-strategies-details [keyword]="'social media'"></app-strategies-details>
+    </my-tab>
+  </my-tabs>
+</div>
+

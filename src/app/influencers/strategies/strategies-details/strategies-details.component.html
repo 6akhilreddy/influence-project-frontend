@@ -1,0 +1,6 @@
+<div class="strategies-details" *ngFor="let strategy of strategiesData">
+  <h5 class="heading">
+    {{strategy.heading}}
+  </h5>
+  <div class="content" [innerHTML]="strategy.content"></div>
+</div>

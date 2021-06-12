@@ -7,6 +7,9 @@ export const environment = {
     influencerSignIn: '/v1/signin/influencer',
     influencerSignUp: '/v1/signup/influencer',
     getInfluencerProfile : '/v1/influencer/profile/',
-    updateInfluencerProfile: '/v1/influencer/profile/update'
+    updateInfluencerProfile: '/v1/influencer/profile/update',
+    getInfluencerStrategies:'/v1/getStrategies/influencer',
+    getBrandProfile: '/v1/brand/profile/',
+    updateBrandProfile: '/v1/brand/profile/update'
   }
 };

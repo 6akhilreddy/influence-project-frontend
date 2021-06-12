@@ -8,11 +8,11 @@ export class DashboardService {
   constructor() { }
 
   getUserName(){
-    return localStorage.getItem('loggedInUsername')
+    return localStorage.getItem('loggedInBrandUsername')
   }
 
   logoutSession(){
-    localStorage.removeItem('isLoggedIn')
-    localStorage.removeItem('loggedInUsername')
+    localStorage.removeItem('isLoggedInBrand')
+    localStorage.removeItem('loggedInBrandUsername')
   }
 }

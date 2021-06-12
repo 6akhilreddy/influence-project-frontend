@@ -12,7 +12,8 @@ export class ProfileService {
 
   constructor(private interceptorService:InterceptorService) { }
 
-  getInfluencerProfileData(username: string){
+  getInfluencerProfileData(){
+    const username = this.getUserName();
     return this.interceptorService.singleApiCall(this.getInfluencerProfileURL, 'GET', username, null, true)
   }
 
@@ -20,5 +21,8 @@ export class ProfileService {
     return this.interceptorService.singleApiCall(this.updateInfluencerProfileURL, 'PUT', influencerObj)
   }
 
+  getUserName(){
+    return localStorage.getItem('loggedInInfluencerUsername')
+  }
 
 }

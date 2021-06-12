@@ -1,0 +1,99 @@
+<app-header></app-header>
+<div class="student-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <div class="avatar-header">
+              <app-avatar [initial]="initalFromUsername"></app-avatar>
+            </div>
+            <h3>{{brandData.username}}</h3>
+          </div>
+          <div class="card-body">
+            <p class="mb-0"><strong class="pr-1">Brand ID : </strong>{{brandData._id}}</p>
+            <p class="mb-0"><strong class="pr-1">Created : </strong>{{brandData.created}}</p>
+            <p class="mb-0"><strong class="pr-1">Updated : </strong>{{brandData.updated}}</p>
+          </div>
+          <div class="card-footer text-center">
+            <button *ngIf="!allowEdit" class="btn btn-primary m-1" [routerLink]="'/brandDashboard'">Dashboard</button>
+            <button *ngIf="!allowEdit" class="btn btn-secondary m-1" (click)="toggleEdit()">Edit</button>
+            <button *ngIf="allowEdit" class="btn btn-primary m-1" (click)="onSubmit()">Submit</button>
+            <button *ngIf="allowEdit" class="btn btn-secondary m-1" (click)="onCancel()">cancel</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+              <tr>
+                <th width="30%">Brand Name</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{brandData.brand_name}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="brand_name" [(ngModel)]="editedData.brand_name"
+                    required placeholder="Brand Name"></td>
+              </tr>
+              <tr>
+                <th width="30%">Email </th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{brandData.email}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="email"
+                    [(ngModel)]="editedData.email" required placeholder="Email"></td>
+              </tr>
+              <tr>
+                <th width="30%">Head Quaters</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{brandData.head_quater}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="head_quater"
+                    [(ngModel)]="editedData.head_quater" required placeholder="Head Quaters"></td>
+              </tr>
+              <tr>
+                <th width="30%">Contact</th>
+                <td width="2%">:</td>
+                <td *ngIf="!allowEdit">{{brandData.contact}}</td>
+                <td *ngIf="allowEdit"><input type="text" class="form-control" name="contact"
+                    [(ngModel)]="editedData.contact" required placeholder="Contact"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div style="height: 26px"></div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Industries</h3>
+          </div>
+          <div *ngIf="!allowEdit" class="card-body pt-0 row">
+              <div class="col" *ngFor="let indusrty of brandData.industries">
+                <div class="chip">
+                  <div class="chip-head">{{indusrty[0]}}</div>
+                  <div class="chip-content">{{indusrty}}</div>
+                </div>
+              </div>
+          </div>
+          <div *ngIf="allowEdit" class="card-body pt-0 row">
+            <div class="form-check form-switch col" *ngFor="let industry of industries">
+              <input class="form-check-input" type="checkbox" [checked]="checkInterest(industry)" (change)="getCheckboxValues($event, industry)">
+              <label class="form-check-label" for="flexSwitchCheckDefault">{{industry}}</label>
+            </div>
+          </div>
+        </div>
+        <div style="height: 26px"></div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>About Me</h3>
+          </div>
+          <div class="card-body pt-0">
+            <p *ngIf="!allowEdit">{{brandData.description}}</p>
+            <div *ngIf="allowEdit" class="mb-3">
+              <textarea class="form-control" name="description" rows="3" [(ngModel)]="editedData.description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

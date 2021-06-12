@@ -9,11 +9,11 @@ import { ProfileService } from '../profile.service';
 export class ProfileMainComponent implements OnInit {
 
   initalFromUsername = ''
-  influencerData: any = {}
+  brandData: any = {}
   allowEdit = false
   editedData: any = {}
 
-  interests: any = ['music', 'fashion', 'fitness', 'food', 'health', 'photograph', 'travel', 'lifestyle', 'tech', 'dance']
+  industries: any = ['music', 'fashion', 'fitness', 'food', 'health', 'photograph', 'travel', 'lifestyle', 'tech', 'dance']
 
   constructor(
     private profileService:ProfileService
@@ -24,15 +24,15 @@ export class ProfileMainComponent implements OnInit {
   }
 
   toggleEdit(){
-    this.editedData = {...this.influencerData}
+    this.editedData = {...this.brandData}
     this.allowEdit = true
   }
 
   getInfluencers(){
     this.profileService.getInfluencerProfileData().subscribe( (resp: any) =>{
-      this.influencerData = resp.body
-      this.initalFromUsername = this.influencerData.username.slice(0, 2)
-      this.influencerData.interests = this.influencerData.interests === undefined ? [] : this.influencerData.interests
+      this.brandData = resp.body
+      this.initalFromUsername = this.brandData.username.slice(0, 2)
+      this.brandData.industries = this.brandData.industries === undefined ? [] : this.brandData.industries
     },(err: any) => console.log(err))
   }
 
@@ -50,7 +50,7 @@ export class ProfileMainComponent implements OnInit {
   }
 
   checkInterest(data: any){
-    let index = this.editedData.interests.findIndex((itm: any) => itm===data)
+    let index = this.editedData.industries.findIndex((itm: any) => itm===data)
     if (index !== -1){
       return true
     }else{
@@ -63,13 +63,13 @@ export class ProfileMainComponent implements OnInit {
 
     if(ev.target.checked){
       // Pushing the object into array
-      this.editedData.interests.push(data);
+      this.editedData.industries.push(data);
 
     }else {
-      let removeIndex = this.editedData.interests.findIndex((itm: any) => itm===data);
+      let removeIndex = this.editedData.industries.findIndex((itm: any) => itm===data);
 
       if(removeIndex !== -1)
-      this.editedData.interests.splice(removeIndex,1);
+      this.editedData.industries.splice(removeIndex,1);
     }
   }
 
