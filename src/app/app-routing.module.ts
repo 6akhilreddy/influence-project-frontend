@@ -22,6 +22,10 @@ const routes: Routes = [
     module => module.ProfileModule )},
   { path: 'influencerStrategies', loadChildren: () => import(`./influencers/strategies/strategies.module`).then(
     module => module.StrategiesModule )},
+  { path: 'brandCampaign', loadChildren: () => import(`./brands/campaign/campaign.module`).then(
+    module => module.CampaignModule )},
+  { path: 'influencerCampaign', loadChildren: () => import(`./influencers/campaign/campaign.module`).then(
+    module => module.CampaignModule )},
 ];
 
 @NgModule({

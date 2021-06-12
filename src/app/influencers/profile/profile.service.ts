@@ -18,6 +18,9 @@ export class ProfileService {
   }
 
   updateInfluencerProfileData(influencerObj: any){
+    influencerObj.age = Number(influencerObj.age)
+    influencerObj.instagram_followers = Number(influencerObj.instagram_followers)
+    influencerObj.instagram_posts = Number(influencerObj.instagram_posts)
     return this.interceptorService.singleApiCall(this.updateInfluencerProfileURL, 'PUT', influencerObj)
   }
 

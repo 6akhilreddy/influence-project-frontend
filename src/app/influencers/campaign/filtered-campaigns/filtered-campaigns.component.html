@@ -1,0 +1,21 @@
+<div class="card-group m-5" *ngFor="let campaign of filteredCampaigns">
+  <div class="card">
+    <div class="card-header">
+      <h6>{{campaign.campaign_title}}</h6>
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{campaign.campaign_details}}</p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item border rounded mt-2">Gender : {{campaign.campaign_gender}}</li>
+        <li class="list-group-item border rounded mt-2">Min Age :{{campaign.campaign_minage}}</li>
+        <li class="list-group-item border rounded mt-2">Max Age : {{campaign.campaign_maxage}}</li>
+        <li class="list-group-item border rounded mt-2">Min Followers : {{campaign.campaign_followers}}</li>
+        <li class="list-group-item border rounded mt-2">Min Posts : {{campaign.campaign_posts}}</li>
+      </ul>
+    </div>
+    <div class="card-footer">
+      <button *ngIf="!checkIfApplied(campaign)" class="btn btn-success" style="float: right;" (click)="applyCampaign(campaign)">Apply</button>
+      <p *ngIf="checkIfApplied(campaign)" class="text-success mt-2" style="float: right;">Applied Successfully</p>
+    </div>
+  </div>
+</div>

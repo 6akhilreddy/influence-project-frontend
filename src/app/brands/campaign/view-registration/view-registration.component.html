@@ -1,0 +1,38 @@
+<div class="card-group m-5" *ngFor="let application of applications">
+  <div class="card">
+    <div class="card-header">
+      <h6>{{application.campaign_title}}</h6>
+    </div>
+    <div class="card-body">
+      <div class="row card-group">
+        <div class="col-3"  *ngFor="let influencer of application.influencers_applied">
+          <div class="card mt-3">
+            <div class="card-header">
+              {{influencer.name}}
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item border rounded mt-2">Gender : {{influencer.name}}</li>
+                <li class="list-group-item border rounded mt-2">Age :{{influencer.age}}</li>
+                <li class="list-group-item border rounded mt-2">Followers : {{influencer.instagram_followers}}</li>
+                <li class="list-group-item border rounded mt-2">Posts : {{influencer.instagram_posts}}</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <div *ngIf="application.application_status === 'pending'">
+                <button class="btn btn-success" (click)="acceptApplication(application.campaign_id, influencer.username)">Accept</button>
+                <button class="btn btn-danger" style="float: right;" (click)="rejectApplication(application.campaign_id, influencer.username)">Reject</button>
+              </div>
+              <div *ngIf="application.application_status === 'accepted'">
+                <p class="text-success mt-2">Application Accepted</p>
+              </div>
+              <div *ngIf="application.application_status === 'rejected'">
+                <p class="text-danger mt-2">Application Rejected</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

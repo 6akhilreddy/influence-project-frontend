@@ -1,0 +1,19 @@
+<div class="row card-group">
+  <div class="col-4"  *ngFor="let application of applications">
+    <div class="card mt-4">
+      <div class="card-header">
+        <h6>{{application.campaign_title}}</h6>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item border rounded mt-2">Brand Name : {{application.brand_name}}</li>
+          <li class="list-group-item border rounded mt-2">Brand Email :{{application.brand_email}}</li>
+          <li class="list-group-item border rounded mt-2">Brand Head Quaters : {{application.brand_headquater}}</li>
+        </ul>
+      </div>
+      <div class="card-footer" [class.bg-success]="application.application_status === 'accepted'" [class.bg-danger]="application.application_status === 'rejected'">
+        {{application.application_status}}
+      </div>
+    </div>
+  </div>
+</div>

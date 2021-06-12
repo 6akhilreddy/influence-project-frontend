@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="row" style="height: 100vh;">
+  <div class="col-sm-2 bg-secondary">
+    <div class="text-center pt-3">
+      <Button class="btn btn-primary" [routerLink]="'/brandDashboard'">Dashboard</Button>
+    </div>
+    <div class="card m-4" [class.bg-warning]="campaignType === 'create'">
+      <div class="card-body">
+        <h5 class="card-title">Create Campaign</h5>
+        <p class="card-text">Create a campaign for your product to engage influencers</p>
+        <button (click)="changeCampaign('create')" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+    <div class="card m-4" [class.bg-warning]="campaignType === 'view'">
+      <div class="card-body">
+        <h5 class="card-title">View Live Campaigns</h5>
+        <p class="card-text">View and Edit the live campaigns you are running</p>
+        <button (click)="changeCampaign('view')" class="btn btn-primary">Live Campaigns</button>
+      </div>
+    </div>
+    <div class="card m-4" [class.bg-warning]="campaignType === 'register'">
+      <div class="card-body">
+        <h5 class="card-title">View Registrations</h5>
+        <p class="card-text">View and Accept the registrations from influencers for campaigns</p>
+        <button (click)="changeCampaign('register')" class="btn btn-primary">Registrations</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div *ngIf="campaignType === 'create'">
+      <app-create-campaign></app-create-campaign>
+    </div>
+    <div *ngIf="campaignType === 'view'">
+      <app-view-campaign></app-view-campaign>
+    </div>
+    <div *ngIf="campaignType === 'register'">
+      <app-view-registration></app-view-registration>
+    </div>
+  </div>
+</div>

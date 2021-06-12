@@ -1,0 +1,45 @@
+<div class="row m-5 p-3 bg-light rounded">
+  <h5>campaign Title</h5>
+  <input type="text" class="form-control mt-3" placeholder="Title" [(ngModel)]="editedData.campaign_title">
+</div>
+<div class="row m-5">
+  <div class="col">
+    <div class="bg-light p-4 rounded">
+      <h5>Campaign Description</h5>
+      <textarea name="campaign_details" id="" cols="40" rows="17" [(ngModel)]="editedData.campaign_details"></textarea>
+    </div>
+  </div>
+  <div class="col">
+    <div class="bg-light p-4 rounded">
+      <h5>Eligiblity Criteria</h5>
+      <input type="text" class="form-control mt-3" placeholder="Gender" [(ngModel)]="editedData.campaign_gender">
+      <input type="text" class="form-control mt-3" placeholder="Min Age" [(ngModel)]="editedData.campaign_minage">
+      <input type="text" class="form-control mt-3" placeholder="Max Age" [(ngModel)]="editedData.campaign_maxage">
+      <input type="text" class="form-control mt-3" placeholder="Followers" [(ngModel)]="editedData.campaign_followers">
+      <input type="text" class="form-control mt-3" placeholder="Posts" [(ngModel)]="editedData.campaign_posts">
+    </div>
+  </div>
+  <div class="col">
+    <div class="bg-light p-4 rounded">
+      <h5>Influencers Interest</h5>
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let interest of interests">
+            <div class="form-check form-switch col" >
+              <input class="form-check-input" type="checkbox" [checked]="checkInterest(interest)" (change)="getCheckboxValues($event, interest)">
+              <label class="form-check-label" for="flexSwitchCheckDefault">{{interest}}</label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col m-5">
+    <button class="btn btn-success" (click)="createCampaign()">Create Campaign</button>
+  </div>
+  <div [hidden]="!success" class="col m-5">
+    <p class="bg-secondary text-center p-2 rounded" style="color: #fff;">Campaign Created Successfully</p>
+  </div>
+</div>
