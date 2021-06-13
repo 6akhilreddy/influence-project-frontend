@@ -8,7 +8,7 @@
             src="../../../../assets/img1.jpeg"
             alt="" /></div>
         <div class="formBx">
-          <form novalidate #signInformRef="ngForm" (ngSubmit)="onSubmitSignIn(signInformRef.value)">
+          <form novalidate #signInformRef="ngForm" (ngSubmit)="onSubmitSignIn(signInformRef)">
             <h2>Sign In</h2>
             <input type="text" name="username" ngModel required placeholder="Username">
             <input type="password" name="password" ngModel required placeholder="Password" />
@@ -23,7 +23,7 @@
       </div>
       <div class="user signupBx">
         <div class="formBx">
-          <form novalidate #signUpformRef="ngForm" (ngSubmit)="onSubmitSignUp(signUpformRef.value)">
+          <form novalidate #signUpformRef="ngForm" (ngSubmit)="onSubmitSignUp(signUpformRef)">
             <h2>Create an account</h2>
             <input type="text" name="username" ngModel required placeholder="Username" />
             <input type="text" name="brand_name" ngModel required placeholder="Brand Name" />

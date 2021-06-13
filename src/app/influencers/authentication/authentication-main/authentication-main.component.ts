@@ -35,22 +35,25 @@ export class AuthenticationMainComponent implements OnInit {
     return areFieldsEmpty
   }
 
-  onSubmitSignIn(siginObj: any){
+  onSubmitSignIn(siginForm: any){
+    const siginObj = siginForm.form.value
     const areFieldsEmpty = this.validateEmptyFields(siginObj);
     if (areFieldsEmpty){
       this.signInErrorMsg = "All the fields are required"
     }else{
       this.authenticationService.signIn(siginObj).subscribe((resp: any) => {
+        siginForm.form.reset();
         this.authenticationService.setupLoginSession(siginObj.username)
         this.router.navigate(['/influencerDashboard'])
       }, (err: any) => {
-        console.log(err)
+        siginForm.form.reset();
         this.signInErrorMsg = err.error.body
       })
     }
   }
 
-  onSubmitSignUp(signupObj: any){
+  onSubmitSignUp(signupForm: any){
+    const signupObj = signupForm.form.value
     const areFieldsEmpty = this.validateEmptyFields(signupObj);
     if (areFieldsEmpty){
       this.signInErrorMsg = "All the fields are required"
@@ -58,8 +61,10 @@ export class AuthenticationMainComponent implements OnInit {
       if(signupObj.password === signupObj.confirmPassword){
         delete signupObj.confirmPassword
         this.authenticationService.signUp(signupObj).subscribe((resp: any) => {
+          signupForm.form.reset()
           this.toggleForm()
         }, (err: any) => {
+          signupForm.form.reset()
           this.signUpErrorMsg = err.error.body
         })
       }else{

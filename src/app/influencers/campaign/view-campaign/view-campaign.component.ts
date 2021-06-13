@@ -31,7 +31,7 @@ export class ViewCampaignComponent implements OnInit {
       const params = {
         open: true,
         modalName: '#warningModal',
-        modalBody: 'You will not able able to apply to this campaign as you did not met the eligibility criteria',
+        modalBody: 'You will not able able to apply to this campaign as you did not met the eligibility criteria. Please update your profile.',
         modalTitle: 'Not Applicable'
       }
       this.subjectService.confirmSubject.next(params)
