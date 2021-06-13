@@ -1,18 +1,47 @@
 <app-header [showBtn]="true" (onLogout)="onLogout()"></app-header>
 <div class="row m-5">
-  <div class="col">
-    <button class="btn btn-primary">View Suggestions</button>
+  <div class="col text-center">
+    <div class="card" style="width: 18rem;">
+      <img src="../../../../assets/campaigns.png" class="card-img-top" alt="..." height="200">
+      <div class="card-body">
+        <p class="card-text">View and apply for the campaigns that are running live</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" [routerLink]="'/influencerCampaign'">Live Campaigns</button>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <button class="btn btn-primary" [routerLink]="'/influencerCampaign'">Live Campaigns</button>
+  <div class="col text-center">
+    <div class="card" style="width: 18rem;">
+      <img src="../../../../assets/strategies.jpeg" class="card-img-top" alt="..." height="200">
+      <div class="card-body">
+        <p class="card-text">Get the Strategies and marketing principles that are refined for you.</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" [routerLink]="'/influencerStrategies'">Get Strategies</button>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <button class="btn btn-primary" [routerLink]="'/influencerStrategies'">Get Strategies</button>
+  <div class="col text-center">
+    <div class="card" style="width: 18rem;">
+      <img src="../../../../assets/courses.png" class="card-img-top" alt="..." height="200">
+      <div class="card-body">
+        <p class="card-text">Get more with our courses and grow in your social media journey</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" [routerLink]="'/courses'">Courses</button>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <button class="btn btn-primary">Courses</button>
-  </div>
-  <div class="col">
-    <button class="btn btn-primary" [routerLink]="'/influencerProfile'">Profile</button>
+  <div class="col text-center">
+    <div class="card" style="width: 18rem;">
+      <img src="../../../../assets/profile.png" class="card-img-top" alt="..." height="200">
+      <div class="card-body">
+        <p class="card-text">Update your profile for better reach to the brands</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" [routerLink]="'/influencerProfile'">Profile</button>
+      </div>
+    </div>
   </div>
 </div>

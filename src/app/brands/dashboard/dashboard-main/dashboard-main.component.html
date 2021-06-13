@@ -1,15 +1,26 @@
 <app-header [showBtn]="true" (onLogout)="onLogout()"></app-header>
 <div class="row m-5">
-  <div class="col">
-    <button class="btn btn-primary">View Suggestions</button>
+  <div class="col brand-background text-center" style="display: flex;justify-content: center;">
+    <div class="card" style="width: 18rem;">
+      <img src="../../../../assets/campaigns.png" class="card-img-top" alt="..." height="200">
+      <div class="card-body">
+        <p class="card-text">View and apply for the campaigns that are running live</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" [routerLink]="'/brandCampaign'">Live Campaigns</button>
+      </div>
+    </div>
   </div>
-  <div class="col">
-    <button class="btn btn-primary" [routerLink]="'/brandCampaign'">Start Campaign</button>
-  </div>
-  <div class="col">
-    <button class="btn btn-primary">View Campaigns</button>
-  </div>
-  <div class="col">
-    <button class="btn btn-primary" [routerLink]="'/brandProfile'">Profile</button>
+  <div class="col influencer-background text-center"  style="display: flex;justify-content: center;">
+    <div class="card" style="width: 18rem;">
+      <img src="../../../../assets/profile.png" class="card-img-top" alt="..." height="200">
+      <div class="card-body">
+        <p class="card-text">Update your profile for better reach to the brands</p>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary" [routerLink]="'/brandProfile'">Profile</button>
+      </div>
+    </div>
   </div>
 </div>
+

@@ -6,13 +6,15 @@ import {HomePageComponent} from './components/home-page/home-page.component'
 import { RouterModule } from '@angular/router';
 import { PopupComponent } from './components/popup/popup.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { CoursesComponent } from './components/courses/courses.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HomePageComponent,
     PopupComponent,
-    AvatarComponent
+    AvatarComponent,
+    CoursesComponent
   ],
   imports: [
     CommonModule,

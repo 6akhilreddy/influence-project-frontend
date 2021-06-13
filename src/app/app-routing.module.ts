@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CoursesComponent } from './shared/components/courses/courses.component';
 import { HomePageComponent } from './shared/components/home-page/home-page.component'
 
 let redirectUrl = '/home';
@@ -7,6 +8,7 @@ let redirectUrl = '/home';
 const routes: Routes = [
   { path: '', redirectTo: redirectUrl, pathMatch: 'full' },
   { path: 'home', component: HomePageComponent},
+  { path: 'courses', component: CoursesComponent},
 
   { path: 'influencerAuth', loadChildren: () => import(`./influencers/authentication/authentication.module`).then(
     module => module.AuthenticationModule )},
