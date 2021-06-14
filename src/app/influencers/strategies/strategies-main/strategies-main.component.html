@@ -12,6 +12,15 @@
     <my-tab [tabTitle]="'Social Media Marketing'">
       <app-strategies-details [keyword]="'social media'"></app-strategies-details>
     </my-tab>
+    <my-tab *ngIf="checkInterestIsPresent('fashion')" [tabTitle]="'Niche Strategies(fashion)'">
+      <app-strategies-details [keyword]="'fashion'"></app-strategies-details>
+    </my-tab>
+    <my-tab *ngIf="checkInterestIsPresent('music')" [tabTitle]="'Niche Strategies(music)'">
+      <app-strategies-details [keyword]="'music'"></app-strategies-details>
+    </my-tab>
+    <my-tab *ngIf="checkInterestIsPresent('photography')"[tabTitle]="'Niche Strategies(photography)'">
+      <app-strategies-details [keyword]="'photography'"></app-strategies-details>
+    </my-tab>
   </my-tabs>
 </div>
 

@@ -35,7 +35,8 @@ export class CampaignService {
   }
 
   getApplications(){
-    return this.interceptorService.singleApiCall(this.getApplicationsURL, "GET")
+    const username = this.getUserName();
+    return this.interceptorService.singleApiCall(this.getApplicationsURL, "GET", username, null, true)
   }
 
   getUserName(){

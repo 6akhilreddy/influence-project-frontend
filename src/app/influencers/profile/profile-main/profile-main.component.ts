@@ -13,7 +13,8 @@ export class ProfileMainComponent implements OnInit {
   allowEdit = false
   editedData: any = {}
 
-  interests: any = ['music', 'fashion', 'fitness', 'food', 'health', 'photograph', 'travel', 'lifestyle', 'tech', 'dance']
+  // interests: any = ['music', 'fashion', 'fitness', 'food', 'health', 'photography', 'travel', 'lifestyle', 'tech', 'dance']
+  interests: any = ['music', 'fashion', 'photography']
 
   constructor(
     private profileService:ProfileService

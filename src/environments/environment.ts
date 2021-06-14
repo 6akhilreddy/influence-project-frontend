@@ -16,7 +16,7 @@ export const environment = {
     getAllCampaigns: '/v1/influencer/campaigns',
     getFilteredCampaigns: '/v1/influencer/campaigns/filtered/',
     applyCampaign: '/v1/influencer/campaign/apply',
-    getApplications: '/v1/brand/campaign/applications',
+    getApplications: '/v1/brand/campaign/applications/',
     acceptApplication:'/v1/brand/campaign/application/accept',
     rejectApplication:'/v1/brand/campaign/application/reject',
     getApplicationStatus: '/v1/influencer/application/status/'
