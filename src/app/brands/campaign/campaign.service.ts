@@ -12,6 +12,7 @@ export class CampaignService {
   private readonly getApplicationsURL = environment.baseUrl + environment.apiEndPoints.getApplications
   private readonly acceptApplicationURL = environment.baseUrl + environment.apiEndPoints.acceptApplication
   private readonly rejectApplicationURL = environment.baseUrl + environment.apiEndPoints.rejectApplication
+  private readonly deleteCampaignURL = environment.baseUrl + environment.apiEndPoints.deleteCampaign
 
   constructor(private interceptorService:InterceptorService) { }
 
@@ -57,6 +58,10 @@ export class CampaignService {
       influencerUsername
     }
     return this.interceptorService.singleApiCall(this.rejectApplicationURL, 'POST', params)
+  }
+
+  deleteCampaign(campaignId: string){
+    return this.interceptorService.singleApiCall(this.deleteCampaignURL, "DELETE", campaignId, null, true)
   }
 
 

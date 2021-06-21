@@ -19,6 +19,7 @@ export const environment = {
     getApplications: '/v1/brand/campaign/applications/',
     acceptApplication:'/v1/brand/campaign/application/accept',
     rejectApplication:'/v1/brand/campaign/application/reject',
-    getApplicationStatus: '/v1/influencer/application/status/'
+    getApplicationStatus: '/v1/influencer/application/status/',
+    deleteCampaign: '/v1/brand/campaign/'
   }
 };

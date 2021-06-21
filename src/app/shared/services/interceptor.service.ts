@@ -56,7 +56,26 @@ export class InterceptorService {
         return this.http.put(url, params, optionss);
 
       case 'DELETE':
-        break;
+        if (isPath) {
+          url = url + params;
+          const options: any = {
+            headers: header
+          };
+          if (responseType !== undefined) {
+            options.responseType = responseType;
+          }
+
+          return this.http.delete(url, options);
+        } else {
+          const options: any = {
+            headers: header,
+            params: params
+          };
+          if (responseType !== undefined) {
+            options.responseType = responseType;
+          }
+          return this.http.delete(url, options);
+        }
     }
   }
 }

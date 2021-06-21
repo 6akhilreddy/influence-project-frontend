@@ -22,4 +22,10 @@ export class ViewCampaignComponent implements OnInit {
     }, (err: any) => console.log(err))
   }
 
+  deleteCampaign(campaign: any) {
+    this.campaignService.deleteCampaign(campaign._id).subscribe((resp: any) => {
+      this.liveCampaigns = this.liveCampaigns.filter((liveCampaign: any) => liveCampaign._id !== campaign._id)
+    }, (err: any) => console.log(err))
+  }
+
 }
