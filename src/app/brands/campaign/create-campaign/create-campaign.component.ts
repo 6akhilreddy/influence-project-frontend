@@ -9,7 +9,7 @@ import { CampaignService } from '../campaign.service';
 })
 export class CreateCampaignComponent implements OnInit {
 
-  interests: any = ['music', 'fashion', 'fitness', 'food', 'health', 'photograph', 'travel', 'lifestyle', 'tech', 'dance']
+  interests: any = ['music', 'fashion', 'photography']
 
   editedData: any = {
     campaign_interests : []

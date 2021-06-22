@@ -19,6 +19,7 @@ export class ViewRegistrationComponent implements OnInit {
   getApplications(){
     this.campaignService.getApplications().subscribe((resp: any) => {
       this.applications = resp.body
+      console.log(this.applications)
     }, (err: any) => console.log(err))
   }
 

@@ -57,6 +57,7 @@ export class CampaignService {
       campaignId,
       influencerUsername
     }
+    console.log(params)
     return this.interceptorService.singleApiCall(this.rejectApplicationURL, 'POST', params)
   }
 
