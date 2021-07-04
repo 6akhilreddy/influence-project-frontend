@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { SubjectService } from 'src/app/shared/services/subject.service';
 import { DashboardService } from '../dashboard.service';
 
@@ -10,21 +11,87 @@ import { DashboardService } from '../dashboard.service';
 })
 export class DashboardMainComponent implements OnInit {
 
-  constructor(private dashboardService: DashboardService, private router: Router, private subjectService: SubjectService) { }
+  influencers: any = []
+
+  constructor(private dashboardService: DashboardService, private router: Router, private spinner: SpinnerService, private ngZone: NgZone) { }
 
   ngOnInit(): void {
-    const params = {
-      open: true,
-      modalName: '#infoModal',
-      modalBody: 'Please update the Profile details for better suggestions and faster reach to brands',
-      modalTitle: 'Update Profile'
-    }
-    // this.subjectService.confirmSubject.next(params)
+    this.getSuggestions();
+  }
+
+  getSuggestions(){
+    this.ngZone.run(() => {
+      this.spinner.show();
+    })
+    this.dashboardService.getSuggestions().subscribe((resp: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      this.influencers = resp.body
+    }, (err: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      console.log(err)
+    })
   }
 
   onLogout(){
     this.dashboardService.logoutSession();
     this.router.navigate(['/brandAuth']);
+  }
+
+  onTrain(){
+    this.ngZone.run(() => {
+      this.spinner.show();
+    })
+    this.dashboardService.trainData().subscribe((resp: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      this.getSuggestions();
+      console.log(resp)
+    }, (err: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      console.log(err)
+    })
+  }
+
+  onWipe(){
+    this.ngZone.run(() => {
+      this.spinner.show();
+    })
+    this.dashboardService.wipeData().subscribe((resp: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      this.getSuggestions();
+      console.log(resp)
+    }, (err: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      console.log(err)
+    })
+  }
+
+  generateCsv(){
+    this.ngZone.run(() => {
+      this.spinner.show();
+    })
+    this.dashboardService.generateCSV().subscribe((resp: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      console.log(resp)
+    }, (err: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
+      console.log(err)
+    })
   }
 
 }

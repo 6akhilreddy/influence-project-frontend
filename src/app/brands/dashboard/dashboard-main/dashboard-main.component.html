@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-  <div class="col influencer-background text-center"  style="display: flex;justify-content: center;">
+  <div class="col influencer-background text-center" style="display: flex;justify-content: center;">
     <div class="card" style="width: 18rem;">
       <img src="../../../../assets/profile.png" class="card-img-top" alt="..." height="200">
       <div class="card-body">
@@ -24,3 +24,36 @@
   </div>
 </div>
 
+<div class="row m-5">
+  <div class="row text-center bg-secondary p-2 rounded">
+    <div class="col">
+      <h5 class="text-light p-1">Recomended Influencers</h5>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col"><button class="btn btn-primary" (click)="generateCsv()">Generate CSV</button></div>
+        <div class="col"><button class="btn btn-primary" (click)="onTrain()">Train Data</button></div>
+        <div class="col"><button class="btn btn-primary" (click)="onWipe()">Wipe Data</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h5 class="m-5" *ngIf="influencers.length === 0">No suggesstions, please generate and train the data</h5>
+
+<div class="card-group m-5" *ngFor="let influencer of influencers">
+  <div class="card">
+    <div class="card-header">
+      <h6>{{influencer.username}}</h6>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item border rounded mt-2">Gender : {{influencer.gender}}</li>
+        <li class="list-group-item border rounded mt-2">Age :{{influencer.age}}</li>
+        <li class="list-group-item border rounded mt-2">Email : {{influencer.email}}</li>
+        <li class="list-group-item border rounded mt-2">Followers : {{influencer.instagram_followers}}</li>
+        <li class="list-group-item border rounded mt-2">Posts : {{influencer.instagram_posts}}</li>
+      </ul>
+    </div>
+  </div>
+</div>

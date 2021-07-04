@@ -7,23 +7,28 @@ import { RouterModule } from '@angular/router';
 import { PopupComponent } from './components/popup/popup.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { CoursesComponent } from './components/courses/courses.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     HomePageComponent,
     PopupComponent,
+    SpinnerComponent,
     AvatarComponent,
-    CoursesComponent
+    CoursesComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgxSpinnerModule
   ],
   exports: [
     HeaderComponent,
     PopupComponent,
-    AvatarComponent
+    AvatarComponent,
+    SpinnerComponent,
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { SubjectService } from 'src/app/shared/services/subject.service';
 import { CampaignService } from '../campaign.service';
 
@@ -11,16 +12,27 @@ export class FilteredCampaignsComponent implements OnInit {
 
   filteredCampaigns: any = []
 
-  constructor(private campaignService:CampaignService, private subjectService: SubjectService) { }
+  constructor(private campaignService:CampaignService, private subjectService: SubjectService, private spinner: SpinnerService, private ngZone: NgZone) { }
 
   ngOnInit(): void {
     this.getFilteredCampaigns();
   }
 
   getFilteredCampaigns(){
+    this.ngZone.run(() => {
+      this.spinner.show();
+    })
     this.campaignService.getFilterCampaignData().subscribe((resp: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
       this.filteredCampaigns = resp.body
-    }, (err: any) => console.log(err))
+    }, (err: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      });
+      console.log(err)
+    })
   }
 
   applyCampaign(campaign: any){

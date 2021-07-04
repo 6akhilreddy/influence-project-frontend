@@ -20,6 +20,10 @@ export const environment = {
     acceptApplication:'/v1/brand/campaign/application/accept',
     rejectApplication:'/v1/brand/campaign/application/reject',
     getApplicationStatus: '/v1/influencer/application/status/',
-    deleteCampaign: '/v1/brand/campaign/'
+    deleteCampaign: '/v1/brand/campaign/',
+    trainCampaign: '/v1/campaign/train',
+    wipeCampaign: '/v1/campaign/wipe',
+    generateCSV: '/v1/campaign/generateCSV',
+    getSuggestions: '/v1/brand/suggest/'
   }
 };

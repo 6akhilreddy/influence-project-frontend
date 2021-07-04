@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { ProfileService } from '../profile.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class ProfileMainComponent implements OnInit {
   interests: any = ['music', 'fashion', 'photography']
 
   constructor(
-    private profileService:ProfileService
+    private profileService:ProfileService, private spinner: SpinnerService, private ngZone: NgZone
   ) { }
 
   ngOnInit(): void {
@@ -30,11 +31,22 @@ export class ProfileMainComponent implements OnInit {
   }
 
   getInfluencers(){
+    this.ngZone.run(() => {
+      this.spinner.show();
+    })
     this.profileService.getInfluencerProfileData().subscribe( (resp: any) =>{
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
       this.influencerData = resp.body
       this.initalFromUsername = this.influencerData.username.slice(0, 2)
       this.influencerData.interests = this.influencerData.interests === undefined ? [] : this.influencerData.interests
-    },(err: any) => console.log(err))
+    },(err: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      });
+      console.log(err)
+    })
   }
 
   onSubmit(){

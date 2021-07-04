@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { CampaignService } from '../campaign.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CampaignService } from '../campaign.service';
 })
 export class ViewRegistrationComponent implements OnInit {
 
-  constructor(private campaignService:CampaignService) { }
+  constructor(private campaignService:CampaignService, private spinner: SpinnerService, private ngZone: NgZone) { }
 
   applications: any = []
 
@@ -17,9 +18,20 @@ export class ViewRegistrationComponent implements OnInit {
   }
 
   getApplicationStatus(){
+    this.ngZone.run(() => {
+      this.spinner.show();
+    })
     this.campaignService.getApplicationStatus().subscribe((resp: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      })
       this.applications = resp.body
-    }, (err: any) => console.log(err))
+    }, (err: any) => {
+      this.ngZone.run(() => {
+        this.spinner.hide();
+      });
+      console.log(err)
+    })
   }
 
 }
